@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,11 +26,13 @@ public class Employee implements Serializable {
 	@Column(name = "cpf")
 	private String cpf;
 	@Column(name = "admissiondate")
-	private String admissionDate;
+	private Date admissionDate;
 	@Column(name = "sexo")
 	private Integer sexo;
 	@Column(name = "birthdate")
 	private Date birthDate;
+	@ManyToOne
+	private Condominium condominium;
 
 	public Integer getId() {
 		return id;
@@ -55,11 +58,11 @@ public class Employee implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getAdmissionDate() {
+	public Date getAdmissionDate() {
 		return admissionDate;
 	}
 
-	public void setAdmissionDate(String admissionDate) {
+	public void setAdmissionDate(Date admissionDate) {
 		this.admissionDate = admissionDate;
 	}
 

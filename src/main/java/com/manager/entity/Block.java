@@ -11,14 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "attractions")
-public class Attractions implements Serializable {
+@Table(name = "block")
+public class Block implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idattractions")
+	@Column(name = "idblock")
 	private Integer id;
 	@ManyToOne
 	private Condominium condominium;
