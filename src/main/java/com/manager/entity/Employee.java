@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,7 +33,12 @@ public class Employee implements Serializable {
 	@Column(name = "birthdate")
 	private Date birthDate;
 	@ManyToOne
+	@JoinColumn(name = "idcondominium")
 	private Condominium condominium;
+	@ManyToOne
+	@JoinColumn(name = "idoffice")
+	private Office office;
+	
 
 	public Integer getId() {
 		return id;

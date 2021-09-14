@@ -24,8 +24,10 @@ public class Condominium implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@OneToOne
+	@JoinColumn(name = "idaddress")
 	private Address address;
 	@OneToMany
+	@JoinColumn(name = "idattractions")
 	private List<Attractions> attractions;
 	@OneToMany
 	@JoinColumn(name = "idcondominium")

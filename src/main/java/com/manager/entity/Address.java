@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,6 +25,7 @@ public class Address implements Serializable {
 	private String state;
 	private String publicPlace;
 	@OneToOne
+	@JoinColumn(name = "idcondominium")
 	private Condominium condominium;
 
 	public Integer getId() {

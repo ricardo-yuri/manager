@@ -1,12 +1,15 @@
 package com.manager.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,6 +24,10 @@ public class Attractions implements Serializable {
 	@Column(name = "idattractions")
 	private Integer id;
 	@ManyToOne
+	@JoinColumn(name = "idcondominium")
 	private Condominium condominium;
+	@ManyToMany
+	@JoinColumn(name = "idblock")
+	private List<Block> block;
 
 }
