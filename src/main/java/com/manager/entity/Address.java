@@ -21,8 +21,11 @@ public class Address implements Serializable {
 	@Column(name = "idaddress")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "city")
 	private String city;
+	@Column(name = "state")
 	private String state;
+	@Column(name = "publicplace")
 	private String publicPlace;
 	@OneToOne
 	@JoinColumn(name = "idcondominium")

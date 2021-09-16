@@ -1,6 +1,7 @@
 package com.manager.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 public class Attractions implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idattractions")
@@ -26,8 +27,7 @@ public class Attractions implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idcondominium")
 	private Condominium condominium;
-	@ManyToMany
-	@JoinColumn(name = "idblock")
-	private List<Block> block;
+	@ManyToMany(mappedBy = "attractions")
+	private List<Block> blocks = new ArrayList<Block>();
 
 }

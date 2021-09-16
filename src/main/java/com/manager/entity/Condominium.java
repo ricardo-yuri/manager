@@ -1,6 +1,7 @@
 package com.manager.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,15 +27,13 @@ public class Condominium implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "idaddress")
 	private Address address;
-	@OneToMany
-	@JoinColumn(name = "idattractions")
-	private List<Attractions> attractions;
-	@OneToMany
-	@JoinColumn(name = "idcondominium")
-	private List<Block> block;
-	@OneToMany
-	@JoinColumn(name = "idemployee")
-	private List<Employee> employee;
+	@OneToMany(mappedBy = "condominium")
+	private List<Attractions> attractions = new ArrayList<>();
+	@OneToMany(mappedBy = "condominium")
+	private List<Block> block = new ArrayList<>();
+	@OneToMany(mappedBy = "condominium")
+	private List<Employee> employee = new ArrayList<>();
+	
 
 	public Condominium() {
 
