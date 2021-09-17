@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,7 +33,5 @@ public class Block implements Serializable {
 	@JoinTable(name = "block_attractions", joinColumns = { @JoinColumn(name = "idblock") }, inverseJoinColumns = {
 	@JoinColumn(name = "idattractions") })
 	List<Attractions> attractions = new ArrayList<>();
-	@OneToMany
-	private List<Resident> residents = new ArrayList<Resident>();
 
 }

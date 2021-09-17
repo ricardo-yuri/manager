@@ -9,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +22,8 @@ public class Attractions implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idattractions")
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(name = "idcondominium")
-	private Condominium condominium;
+	@ManyToMany(mappedBy = "attractions")
+	private List<Condominium> condominiums = new ArrayList<>();
 	@ManyToMany(mappedBy = "attractions")
 	private List<Block> blocks = new ArrayList<Block>();
 

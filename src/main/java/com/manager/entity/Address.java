@@ -27,8 +27,7 @@ public class Address implements Serializable {
 	private String state;
 	@Column(name = "publicplace")
 	private String publicPlace;
-	@OneToOne
-	@JoinColumn(name = "idcondominium")
+	@OneToOne(mappedBy = "address")
 	private Condominium condominium;
 
 	public Integer getId() {

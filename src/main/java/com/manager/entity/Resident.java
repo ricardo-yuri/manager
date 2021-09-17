@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,6 +33,7 @@ public class Resident implements Serializable {
 	@Column(name = "birthDate")
 	private Date birthDate;
 	@ManyToOne
+	@JoinColumn(name = "idapartment" , referencedColumnName = "idapartment" )
 	private Apartment apartment;
 
 }

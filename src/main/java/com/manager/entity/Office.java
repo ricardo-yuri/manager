@@ -1,8 +1,10 @@
 package com.manager.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +24,9 @@ public class Office implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idoffice")
 	private Integer id;
-	@OneToMany
-	@JoinColumn(name = "idemployee")
-	private List<Employee> employee;
+	@Column(name = "nameoffice")
+	private String name;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "office")
+	private List<Employee> employees = new ArrayList<>();
 
 }
