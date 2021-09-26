@@ -1,42 +1,25 @@
-package com.manager.entity;
+package com.manager.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.manager.entity.Apartment;
+import com.manager.entity.Resident;
 
-@Entity
-@Table(name = "resident")
-public class Resident implements Serializable {
+public class ResidentDto {
 
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idresident")
 	private Integer id;
-	@Column(name = "name")
 	private String name;
-	@Column(name = "cpf")
 	private String cpf;
-	@Column(name = "phone")
 	private String phone;
-	@Column(name = "sexo")
 	private Integer sexo;
-	@Column(name = "birthDate")
 	private Date birthDate;
-	@ManyToOne
-	@JoinColumn(name = "idapartment", referencedColumnName = "idapartment")
 	private Apartment apartment;
 
-	public Resident(Integer id, String name, String cpf, String phone, Integer sexo, Date birthDate,
+	public ResidentDto() {
+
+	}
+
+	public ResidentDto(Integer id, String name, String cpf, String phone, Integer sexo, Date birthDate,
 			Apartment apartment) {
 		super();
 		this.id = id;
@@ -46,6 +29,11 @@ public class Resident implements Serializable {
 		this.sexo = sexo;
 		this.birthDate = birthDate;
 		this.apartment = apartment;
+	}
+	
+	public Resident residentDtoToResident() {
+		Resident resident = new Resident(getId(), getName(), getCpf(), getPhone(), getSexo(), getBirthDate(), getApartment());
+		return resident;
 	}
 
 	public Integer getId() {

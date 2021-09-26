@@ -36,8 +36,8 @@ public class Employee implements Serializable {
 	@JoinColumn(name = "idcondominium")
 	private Condominium condominium;
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "idoffice", referencedColumnName = "idoffice")
-	private Office office;
+	@JoinColumn(name = "idjob", referencedColumnName = "idjob")
+	private Job job;
 	
 
 	public Integer getId() {
