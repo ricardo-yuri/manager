@@ -1,8 +1,5 @@
 package com.manager.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.manager.dto.AddressCondominiumDto;
 import com.manager.dto.AddressDto;
-import com.manager.entity.Address;
-import com.manager.repository.AddressRepository;
 import com.manager.service.AddressCondominiumService;
 import com.manager.service.AddressServiceImpl;
 import com.manager.service.CondominiumServiceImpl;
@@ -28,9 +23,8 @@ public class ManagerController {
 	@Autowired
 	private CondominiumServiceImpl condominiumServiceImpl;
 	private AddressCondominiumService addressCondominiumService;
+	@Autowired
 	private AddressServiceImpl addressServiceImpl;
-	private AddressRepository addressRepository;
-//	private CondominiumRepository condominiumRepository;
 
 	@PostMapping("/add-address")
 	public ResponseEntity<?> add(@RequestBody AddressDto addressDto) {
@@ -65,9 +59,7 @@ public class ManagerController {
 	@GetMapping("/address")
 	public ResponseEntity<?> findByAddressService() {
 		try {
-			List<Address> adress = new ArrayList<Address>();
-			adress = addressRepository.findAll();
-			return ResponseEntity.status(200).body(adress);
+			return ResponseEntity.status(200).body(addressServiceImpl.findAll());
 		} catch (Exception e) {
 			return ResponseEntity.status(500).body("Error: " + e.getMessage());
 		}
